@@ -59,7 +59,7 @@ extension CKRecordRecoverable where Self: Object {
             
             switch prop.type {
             case .int:
-                recordValue = record.value(forKey: prop.name) as? Int
+                recordValue = record.value(forKey: prop.name) as? Int ?? Int(record.value(forKey: prop.name) as? String ?? "")
             case .string:
                 recordValue = record.value(forKey: prop.name) as? String
             case .bool:
