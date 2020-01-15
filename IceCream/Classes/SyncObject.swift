@@ -90,8 +90,7 @@ extension SyncObject: Syncable {
     public func delete(recordID: CKRecord.ID) {
         DispatchQueue.main.async {
             let realm = try! Realm()
-            NSLog("iCloud crash debug:\nObject type: \(T.self)\nPrimary key: \(recordID.recordName)")
-            guard let object = realm.object(ofType: T.self, forPrimaryKey: recordID.recordName) else {
+            guard let object = realm.object(ofType: T.self, forPrimaryKey: Int(recordID.recordName)) else {
                 // Not found in local realm database
                 return
             }
