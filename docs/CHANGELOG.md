@@ -1,5 +1,62 @@
 # Change Log
 
+## [1.12.0 - Background Worker](https://github.com/caiyue1993/IceCream/releases/tag/1.12.0)
+
+#### Add
+
+* Implement background synchronization [#155](https://github.com/caiyue1993/IceCream/pull/155)
+
+#### Fix 
+
+* Fix primaryKey wrongly convertion issue [#165](https://github.com/caiyue1993/IceCream/pull/165)
+
+## [1.11.0 - You Want This Completion Handler](https://github.com/caiyue1993/IceCream/releases/tag/1.11.0)
+
+#### Add
+
+* Add a completionHandler in the pull method [#141](https://github.com/caiyue1993/IceCream/pull/141)
+
+## [1.10.1](https://github.com/caiyue1993/IceCream/releases/tag/1.10.1)
+
+#### Fix
+
+* Fix Carthage build failing issue on macOS, watchOS and tvOS
+
+## [1.10.0 - Swift 5](https://github.com/caiyue1993/IceCream/releases/tag/1.10.0)
+
+#### Add
+
+* Now IceCream builds against Swift 5.0 and Xcode 10.2.
+
+## [1.9.0 - Make It Public](https://github.com/caiyue1993/IceCream/releases/tag/1.9.0)
+
+#### Add
+
+* Add support for public database [#124](https://github.com/caiyue1993/IceCream/pull/124)
+
+## [1.8.0 - Customization](https://github.com/caiyue1993/IceCream/releases/tag/1.8.0)
+
+#### Add
+
+* Add a option to let developer choose whether to overwrite existing CreamAsset file(the default choice is `true`) [#103](https://github.com/caiyue1993/IceCream/pull/103)
+* Add support for custom CKContainers [#104](https://github.com/caiyue1993/IceCream/pull/104)
+* Add support for custom Realm [#108](https://github.com/caiyue1993/IceCream/pull/108)
+
+#### Fix
+
+* Fix the conversion issue of recordID to Int type primaryKey [#111](https://github.com/caiyue1993/IceCream/pull/111)
+
+## [1.7.2 - Realm List of Basic Types](https://github.com/caiyue1993/IceCream/releases/tag/1.7.2)
+
+#### Add
+
+* Add support for Lists of basic types [#98](https://github.com/caiyue1993/IceCream/pull/98)
+
+#### Fix 
+
+* Fix a crash when new no-optional property added [#92](https://github.com/caiyue1993/IceCream/pull/92)
+* Avoid force unwrapping `storedData` [#101](https://github.com/caiyue1993/IceCream/pull/101)
+
 ## [1.7.1 - Optimizations](https://github.com/caiyue1993/IceCream/releases/tag/1.7.1)
 
 #### Add
@@ -7,7 +64,7 @@
 * Add `pushAll` method. 
 * change method name `sync` to `pull`. 
 
-### Fix 
+#### Fix 
 
 * Fetch changes on the non-main thread.
 * Move registerLocalDatabase to completion block of createCustomZones.

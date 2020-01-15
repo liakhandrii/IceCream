@@ -10,23 +10,13 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
-    lazy var dogsViewController: UIViewController = {
-        let nav = UINavigationController(rootViewController: DogsViewController())
-        return nav
-    }()
-    
-    lazy var catsViewController: UIViewController = {
-        let nav = UINavigationController(rootViewController: CatsViewController())
-        return nav
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-    }
-    
-    private func setupUI() {
-        viewControllers = [dogsViewController, catsViewController]
+         viewControllers = [
+            UINavigationController(rootViewController: DogsViewController()),
+            UINavigationController(rootViewController: CatsViewController()),
+            UINavigationController(rootViewController: DevelopersViewController())
+        ]
     }
 
 }

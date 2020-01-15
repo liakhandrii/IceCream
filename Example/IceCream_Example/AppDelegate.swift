@@ -16,13 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var syncEngine: SyncEngine?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         syncEngine = SyncEngine(objects: [
             SyncObject<Person>(),
             SyncObject<Dog>(),
             SyncObject<Cat>()
             ])
+      
+        /// If you wanna test public Database, comment the above syncEngine code and uncomment the following one
+        /// Besides, uncomment Line 26 to 28 in Person.swift file
+//        syncEngine = SyncEngine(objects: [SyncObject<Person>()], databaseScope: .public)
+      
         application.registerForRemoteNotifications()
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -33,13 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-        let dict = userInfo as! [String: NSObject]
-        let notification = CKNotification(fromRemoteNotificationDictionary: dict)
-        
-        if (notification.subscriptionID == IceCreamConstant.cloudKitSubscriptionID) {
-             NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
+        if let dict = userInfo as? [String: NSObject], let notification = CKNotification(fromRemoteNotificationDictionary: dict), let subscriptionID = notification.subscriptionID, IceCreamSubscription.allIDs.contains(subscriptionID) {
+            NotificationCenter.default.post(name: Notifications.cloudKitDataDidChangeRemotely.name, object: nil, userInfo: userInfo)
+            completionHandler(.newData)
         }
-        completionHandler(.newData)
         
     }
     
